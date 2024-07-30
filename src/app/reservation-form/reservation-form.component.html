@@ -1,0 +1,43 @@
+<app-home></app-home>
+<br>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Create a New Reservation</h2>
+  <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+    <div class="mb-3">
+      <label for="checkInDate" class="form-label">Check-In Date</label>
+      <input id="checkInDate" type="date" formControlName="checkInDate" class="form-control">
+      <div *ngIf="reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched" class="text-danger">
+        Check-In date is Required
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="checkOutDate" class="form-label">Check-Out Date</label>
+      <input id="checkOutDate" type="date" formControlName="checkOutDate" class="form-control">
+      <div *ngIf="reservationForm.get('checkOutDate')?.invalid && reservationForm.get('checkOutDate')?.touched" class="text-danger">
+        Check-Out date is Required
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="guestName" class="form-label">Guest Name</label>
+      <input id="guestName" type="text" formControlName="guestName" class="form-control">
+      <div *ngIf="reservationForm.get('guestName')?.invalid && reservationForm.get('guestName')?.touched" class="text-danger">
+        Enter Guest Name is Required
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="guestEmail" class="form-label">Guest Email</label>
+      <input id="guestEmail" type="email" formControlName="guestEmail" class="form-control">
+      <div *ngIf="reservationForm.get('guestEmail')?.invalid && reservationForm.get('guestEmail')?.touched" class="text-danger">
+        Email Incorrect
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="roomNumber" class="form-label">Room Number</label>
+      <input id="roomNumber" type="number" formControlName="roomNumber" class="form-control">
+      <div *ngIf="reservationForm.get('roomNumber')?.invalid && reservationForm.get('roomNumber')?.touched" class="text-danger">
+        Enter Room Number
+      </div>
+    </div>
+    <button type="submit" [disabled]="reservationForm.invalid" class="btn btn-primary w-100">Submit</button>
+  </form>
+</div>
